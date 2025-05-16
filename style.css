@@ -1,8 +1,10 @@
-body {
-    margin:0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body { 
+ margin:0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #f4f7fa; color: #333;
     display:flex; flex-direction: column; min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
 }
+
 header {
     background-color: #0d47a1;
     color: white;
@@ -10,38 +12,69 @@ header {
     display: flex; align-items: center; justify-content: space-between;
     position: sticky; top: 0; z-index: 1000;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
 }
+
+header:hover {
+    background-color: #1565c0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
 header h1 {
     font-weight: 700;
     font-size: 1.8rem;
     margin: 0;
+    transition: transform 0.3s;
 }
+
+header h1:hover {
+    transform: scale(1.05);
+}
+
 nav a {
     text-decoration: none;
     color: white;
     font-weight: 600;
     margin-left: 1.5rem;
-    transition: color 0.3s;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
+
 nav a:hover {
     color: #ffc107;
+    transform: translateY(-2px);
 }
+
 main {
     flex: 1;
     padding: 2rem;
     max-width: 1000px;
     margin: 0 auto;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
 }
+
 main h2 {
     font-size: 2rem;
     color: #0d47a1;
     margin-bottom: 1rem;
+    transition: color 0.3s ease;
 }
+
+main h2:hover {
+    color: #1565c0;
+}
+
 main p {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 1.2rem;
+    transition: transform 0.3s ease;
 }
+
+main p:hover {
+    transform: scale(1.01);
+}
+
 .hero {
     background: linear-gradient(135deg, #0d47a1, #1565c0);
     color: #fff;
@@ -50,16 +83,32 @@ main p {
     text-align: center;
     margin-bottom: 2rem;
     box-shadow: 0 6px 15px rgba(13, 71, 161,0.7);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUp 1s ease-out forwards;
 }
+
 .hero h2 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
 }
+
+.hero h2:hover {
+    transform: scale(1.03);
+}
+
 .hero p {
     font-size: 1.25rem;
     max-width: 700px;
     margin: 0 auto;
+    transition: color 0.3s ease;
 }
+
+.hero p:hover {
+    color: #ffc107;
+}
+
 footer {
     background-color: #263238;
     color: #ccc;
@@ -67,13 +116,32 @@ footer {
     padding: 1rem 2rem;
     font-size: 0.9rem;
     margin-top: auto;
+    transition: background-color 0.3s;
 }
+
+footer:hover {
+    background-color: #37474f;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 @media (max-width: 600px) {
     nav a {
-    margin-left: 1rem;
-    font-size: 0.9rem;
+        margin-left: 1rem;
+        font-size: 0.9rem;
     }
     .hero h2 {
-    font-size: 2rem;
+        font-size: 2rem;
     }
 }
